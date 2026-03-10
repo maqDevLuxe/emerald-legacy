@@ -1,0 +1,171 @@
+@import url('https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400;1,700&family=Lato:wght@300;400;700;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 140 20% 4%;
+    --foreground: 40 20% 95%;
+
+    --card: 140 18% 8%;
+    --card-foreground: 40 20% 95%;
+
+    --popover: 140 18% 8%;
+    --popover-foreground: 40 20% 95%;
+
+    --primary: 42 76% 55%;
+    --primary-foreground: 140 20% 4%;
+
+    --secondary: 150 30% 12%;
+    --secondary-foreground: 40 20% 90%;
+
+    --muted: 140 12% 14%;
+    --muted-foreground: 40 10% 60%;
+
+    --accent: 155 40% 18%;
+    --accent-foreground: 40 20% 95%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 140 15% 18%;
+    --input: 140 15% 18%;
+    --ring: 42 76% 55%;
+
+    --radius: 0.5rem;
+
+    --emerald-deep: 150 40% 10%;
+    --emerald: 155 45% 20%;
+    --emerald-light: 155 35% 30%;
+    --gold: 42 76% 55%;
+    --gold-light: 42 80% 70%;
+    --gold-dark: 38 60% 40%;
+    --pearl: 40 20% 95%;
+    --pearl-muted: 40 10% 80%;
+    --cream: 40 30% 92%;
+
+    --font-serif: 'Amiri', Georgia, serif;
+    --font-sans: 'Lato', sans-serif;
+
+    --shadow-gold: 0 0 30px hsl(42 76% 55% / 0.15);
+    --shadow-gold-hover: 0 0 50px hsl(42 76% 55% / 0.25);
+    --gradient-emerald: linear-gradient(180deg, hsl(150 40% 10%), hsl(140 20% 4%));
+    --gradient-gold: linear-gradient(135deg, hsl(42 76% 55%), hsl(38 60% 40%));
+    --gradient-card: linear-gradient(145deg, hsl(140 18% 10%), hsl(140 18% 6%));
+
+    --sidebar-background: 140 18% 8%;
+    --sidebar-foreground: 40 20% 95%;
+    --sidebar-primary: 42 76% 55%;
+    --sidebar-primary-foreground: 140 20% 4%;
+    --sidebar-accent: 155 40% 18%;
+    --sidebar-accent-foreground: 40 20% 95%;
+    --sidebar-border: 140 15% 18%;
+    --sidebar-ring: 42 76% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: var(--font-sans);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-serif);
+  }
+
+  html.lenis, html.lenis body {
+    height: auto;
+  }
+
+  .lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+  }
+
+  .lenis.lenis-smooth [data-lenis-prevent] {
+    overscroll-behavior: contain;
+  }
+
+  .lenis.lenis-stopped {
+    overflow: hidden;
+  }
+
+  .lenis.lenis-scrolling iframe {
+    pointer-events: none;
+  }
+}
+
+@layer components {
+  .gold-glow {
+    transition: box-shadow 0.5s ease, text-shadow 0.5s ease;
+  }
+
+  .gold-glow:hover {
+    box-shadow: var(--shadow-gold-hover);
+  }
+
+  .text-gold-glow:hover {
+    text-shadow: 0 0 20px hsl(42 76% 55% / 0.4);
+  }
+
+  .gradient-border {
+    position: relative;
+  }
+
+  .gradient-border::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: var(--gradient-gold);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+  }
+
+  .bg-pattern-islamic {
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0L60 30L30 60L0 30z' fill='none' stroke='%23d4a84422' stroke-width='0.5'/%3E%3C/svg%3E");
+  }
+
+  .section-padding {
+    @apply py-24 md:py-32 lg:py-40 px-6 md:px-12 lg:px-20;
+  }
+
+  .heading-display {
+    font-family: var(--font-serif);
+    @apply text-4xl md:text-5xl lg:text-6xl xl:text-7xl leading-tight tracking-tight;
+  }
+
+  .heading-section {
+    font-family: var(--font-serif);
+    @apply text-3xl md:text-4xl lg:text-5xl leading-tight;
+  }
+
+  .label-gold {
+    font-family: var(--font-sans);
+    @apply text-xs md:text-sm uppercase tracking-[0.3em] font-bold;
+    color: hsl(var(--gold));
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: hsl(var(--emerald-deep));
+}
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--gold) / 0.3);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--gold) / 0.5);
+}
